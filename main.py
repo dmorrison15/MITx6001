@@ -9,6 +9,6 @@ for i in range(12) :
   monthly_payment = monthly_payment_rate * balance
   unpaid_balance = balance - monthly_payment
   balance = round(unpaid_balance + (monthly_interest_rate * unpaid_balance), 2) 
-  print('Month', str(i + 1), 'remaining balance:', str(balance))
 
-print('\n' + 'Remaining balance:', str(balance))
+
+print('Remaining balance:', str(balance))
