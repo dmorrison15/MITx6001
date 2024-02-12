@@ -1,13 +1,13 @@
 balance = int(input('balance: '))
-curBalance = 0
+curBalance = balance
 annualInterestRate = float(input('annual interest rate: '))
-monthlyPayment = 10
 monthlyInterestRate = annualInterestRate / 12
+monthlyPayment = 10
 while True:
   for i in range(12) :
-    unpaid_balance = balance - monthlyPayment
-    curBalance = round(unpaid_balance + (monthlyInterestRate * unpaid_balance),  12)
-  if curBalance >= balance :
+    unpaid_balance = curBalance - monthlyPayment
+    curBalance = round(unpaid_balance + (monthlyInterestRate * unpaid_balance),  2)
+  if curBalance <= balance :
     break
   monthlyPayment += 10
 print('Lowest Payment:', monthlyPayment)
