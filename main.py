@@ -1,1 +1,1 @@
-import pset3.Q1.getAvailableLetters
+import pset3.Q1.helperFunctions
