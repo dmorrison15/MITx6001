@@ -1,1 +1,1 @@
-import pset2.Q3
+import pset3.Q1.isWordGuessed
