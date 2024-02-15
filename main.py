@@ -1,1 +1,1 @@
-import pset3.Q1.getGuessedWord
+import pset3.Q1.getAvailableLetters
