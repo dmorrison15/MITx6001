@@ -1,3 +1,4 @@
+#returns a string of the letters that haven't been guessed by the user
 def getAvailableLetters(lettersGuessed) :
   allLetters = 'abcdefghijklmnopqrstuvwxyz'
   unusedLetters = ''
@@ -6,6 +7,7 @@ def getAvailableLetters(lettersGuessed) :
       unusedLetters += letter
   return unusedLetters
 
+#returns a string of the secret word with a '_' in the place of an unguessed letter
 def getGuessedWord(secretWord, lettersGuessed) :
   result = ''
   for letter in secretWord :
@@ -15,8 +17,6 @@ def getGuessedWord(secretWord, lettersGuessed) :
       result += letter
   return result
 
+#returns boolean of whether or not all letters in the secret word have been guessed
 def isWordGuessed(secretWord, lettersGuessed) :
-  for letter in secretWord :
-    if letter not in lettersGuessed :
-      return False
-  return True
+  return all(letter in lettersGuessed for letter in secretWord)
