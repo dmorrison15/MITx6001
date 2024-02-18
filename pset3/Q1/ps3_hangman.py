@@ -69,7 +69,6 @@ def getGuessedWord(secretWord, lettersGuessed):
     return result
 
 
-
 def getAvailableLetters(lettersGuessed):
     '''
     lettersGuessed: list, what letters have been guessed so far
@@ -82,6 +81,20 @@ def getAvailableLetters(lettersGuessed):
       if letter not in lettersGuessed :
         unusedLetters += letter
     return unusedLetters
+  
+
+def welcomePlayer(secretWord) :
+
+  # prints a welcome message to the player and tells them the length of the secret word
+  numLetters = len(secretWord)
+  print("Welcome to the game Hangman!")
+  if numLetters == 1 :
+    print("I am thinking of a word that is", numLetters, "letter long.")
+  else :
+    print("I am thinking of a word that is", numLetters, "letters long.")
+    
+def buffer() :
+  print(12*'_')
 
 
 def hangman(secretWord):
@@ -105,8 +118,48 @@ def hangman(secretWord):
     Follows the other limitations detailed in the problem write-up.
     '''
     # FILL IN YOUR CODE HERE...
+    welcomePlayer(secretWord)
+    
+    guessesLeft = 8
+    lettersGuessed = []
 
-
+    while guessesLeft > 0 :
+      
+      buffer()
+      
+      #tell player how many guesses they have and the letters they haven't guessed yet
+      print('You have', guessesLeft, 'guesses left.')
+      print('Available letters:', getAvailableLetters(lettersGuessed))
+      
+      guess = input('Please guess a letter: ')
+      #if the player guesses the same letter twice, they are told and the round is reset
+      if guess in lettersGuessed :
+        print("Oops! You've already guessed that letter:", getGuessedWord(secretWord, lettersGuessed))
+        continue
+        
+      lettersGuessed += guess
+      
+      #if the guess is correct, the secret word is updated to reveal the letter
+      if guess in secretWord :
+        print("Good guess:", getGuessedWord(secretWord, lettersGuessed))
+      
+      #if the guess is wrong, the player loses a guess 
+      else :
+        print("Oops! That letter is not in my word:", getGuessedWord(secretWord, lettersGuessed))
+        guessesLeft -= 1
+      
+      #Congratulate player if they guess the secret word
+      if isWordGuessed(secretWord, lettersGuessed) :
+        print("Congratulations, you won!")
+        break
+    
+  #Reveal the secret word if the player loses    
+    if isWordGuessed(secretWord, lettersGuessed) == False :
+      print("Sorry, you ran out of guesses. The word was", secretWord)
+      
+       
+      
+    
 
 
 
@@ -116,4 +169,5 @@ def hangman(secretWord):
 # secretWord while you're testing)
 
 # secretWord = chooseWord(wordlist).lower()
-# hangman(secretWord)
+secretWord = "apples"
+hangman(secretWord)
