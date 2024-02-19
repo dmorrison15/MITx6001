@@ -93,7 +93,7 @@ def welcomePlayer(secretWord) :
   else :
     print("I am thinking of a word that is", numLetters, "letters long.")
     
-def buffer() :
+def printBuffer() :
   print(12*'_')
 
 
@@ -125,7 +125,7 @@ def hangman(secretWord):
 
     while guessesLeft > 0 :
       
-      buffer()
+      printBuffer()
       
       #tell player how many guesses they have and the letters they haven't guessed yet
       print('You have', guessesLeft, 'guesses left.')
