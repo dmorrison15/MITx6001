@@ -131,7 +131,7 @@ def hangman(secretWord):
       print('You have', guessesLeft, 'guesses left.')
       print('Available letters:', getAvailableLetters(lettersGuessed))
       
-      guess = input('Please guess a letter: ')
+      guess = input('Please guess a letter: ').lower()
       #if the player guesses the same letter twice, they are told and the round is reset
       if guess in lettersGuessed :
         print("Oops! You've already guessed that letter:", getGuessedWord(secretWord, lettersGuessed))
