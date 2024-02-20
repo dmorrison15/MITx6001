@@ -91,10 +91,10 @@ def welcomePlayer(secretWord) :
   if numLetters == 1 :
     print("I am thinking of a word that is", numLetters, "letter long.")
   else :
-    print("I am thinking of a word that is", numLetters, "letters long.")
+    print("I am thinking of a word that is", numLetters, "letters long")
     
 def printBuffer() :
-  print(12*'_')
+  print(12*'-')
 
 
 def hangman(secretWord):
@@ -128,8 +128,8 @@ def hangman(secretWord):
       printBuffer()
       
       #tell player how many guesses they have and the letters they haven't guessed yet
-      print('You have', guessesLeft, 'guesses left.')
-      print('Available letters:', getAvailableLetters(lettersGuessed))
+      print('You have', guessesLeft, 'guesses left')
+      print('Available Letters:', getAvailableLetters(lettersGuessed))
       
       guess = input('Please guess a letter: ').lower()
       #if the player guesses the same letter twice, they are told and the round is reset
@@ -150,12 +150,14 @@ def hangman(secretWord):
       
       #Congratulate player if they guess the secret word
       if isWordGuessed(secretWord, lettersGuessed) :
-        print("Congratulations, you won!")
         break
     
-  #Reveal the secret word if the player loses    
+  #Reveal the secret word if the player loses      
+    printBuffer()    
     if isWordGuessed(secretWord, lettersGuessed) == False :
-      print("Sorry, you ran out of guesses. The word was", secretWord)
+        print("Sorry, you ran out of guesses. The word was", secretWord)
+    else :
+        print("Congratulations, you won!")
       
        
       
