@@ -238,7 +238,7 @@ def playHand(hand, wordList, n):
     # As long as there are still letters left in the hand:
     while calculateHandlen(hand) > 0 :
         # Display the hand
-      print('Current hand: ', end = '')
+      print('Current Hand: ', end = '')
       displayHand(hand)
         # Ask user for input
       word = input('Enter word, or a "." to indicate that you are finished: ')
@@ -253,6 +253,7 @@ def playHand(hand, wordList, n):
 
                 # Reject invalid word (print a message followed by a blank line)
         print("Invalid word, please try again." + "\n")
+        print("")
         continue
             # Otherwise (the word is valid):
       
@@ -263,6 +264,7 @@ def playHand(hand, wordList, n):
       print('"' + word + '"', 'earned', score, 'points. Total:', total)
                 # Update the hand
       hand = updateHand(hand, word)
+      print("")
     # Game is over (user entered a '.' or ran out of letters), so tell user the total score
     if calculateHandlen(hand) == 0 :
       print('Ran out of letters. Total score:', total)
@@ -285,8 +287,28 @@ def playGame(wordList):
 
     2) When done playing the hand, repeat from step 1    
     """
-    # TO DO ... <-- Remove this comment when you code this function
-    print("playGame not yet implemented.") # <-- Remove this line when you code the function
+    numRounds = 0
+    hand = dealHand(HAND_SIZE)  
+    while True :
+      choice = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+      if choice == 'e' :
+        break
+      elif choice == 'r' :
+        if numRounds == 0 :
+          print("You have not played a hand yet. Please play a new hand first!")
+          print("")
+          continue
+        playHand(hand, wordList, HAND_SIZE)
+        print("")
+      elif choice == 'n' :
+        hand = dealHand(HAND_SIZE)
+        playHand(hand, wordList, HAND_SIZE)
+        print("")
+      else :
+        print("Invalid command.")
+        continue
+      numRounds += 1
+    
 
 
 
