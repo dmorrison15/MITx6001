@@ -248,11 +248,12 @@ def playHand(hand, wordList, n):
           break
 
         # Otherwise (the input is not a single period):
-      while not isValidWord(word, hand, wordList) :
+      if not isValidWord(word, hand, wordList) :
             # If the word is not valid:
 
                 # Reject invalid word (print a message followed by a blank line)
-        print("Invalid word, please try again. + \n")
+        print("Invalid word, please try again." + "\n")
+        continue
             # Otherwise (the word is valid):
       
                 # Tell the user how many points the word earned, and the updated total score, in one line followed by a blank line
