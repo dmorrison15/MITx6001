@@ -201,7 +201,12 @@ def calculateHandlen(hand):
     hand: dictionary (string-> int)
     returns: integer
     """
-    # TO DO... <-- Remove this comment when you code this function
+    
+    length = 0  
+    for key in hand :
+      for i in range(hand[key]) :
+        length += 1
+    return length
 
 
 
