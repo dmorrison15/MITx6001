@@ -149,7 +149,6 @@ def updateHand(hand, word):
     hand: dictionary (string -> int)    
     returns: dictionary (string -> int)
     """
-    # TO DO ... <-- Remove this comment when you code this function
     handCopy = dict(hand)
     for key in handCopy :
       if str(key) in word :
@@ -176,8 +175,20 @@ def isValidWord(word, hand, wordList):
     hand: dictionary (string -> int)
     wordList: list of lowercase strings
     """
-    # TO DO ... <-- Remove this comment when you code this function
-
+    if word not in wordList :
+      return False
+    for letter in word :
+      if letter not in hand :
+        return False
+      count = word.count(letter)
+      handCount = hand[letter]
+      if count > handCount :
+        return False    
+    return True
+    
+      
+      
+      
 
 #
 # Problem #4: Playing a hand
