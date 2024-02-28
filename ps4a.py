@@ -150,6 +150,15 @@ def updateHand(hand, word):
     returns: dictionary (string -> int)
     """
     # TO DO ... <-- Remove this comment when you code this function
+    handCopy = dict(hand)
+    for key in handCopy :
+      if str(key) in word :
+        count = word.count(str(key))
+        handCopy[key] = handCopy[key] - count
+    return handCopy
+    
+    
+      
 
 
 
