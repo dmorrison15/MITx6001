@@ -10,5 +10,4 @@ for i in range(12) :
   unpaid_balance = balance - monthly_payment
   balance = round(unpaid_balance + (monthly_interest_rate * unpaid_balance), 2) 
 
-
-print('Remaining balance:', str(balance))rob
+print('Remaining balance:', str(balance))
