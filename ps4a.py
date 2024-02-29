@@ -296,14 +296,11 @@ def playGame(wordList):
       elif choice == 'r' :
         if numRounds == 0 :
           print("You have not played a hand yet. Please play a new hand first!")
-          print("")
           continue
         playHand(hand, wordList, HAND_SIZE)
-        print("")
       elif choice == 'n' :
         hand = dealHand(HAND_SIZE)
         playHand(hand, wordList, HAND_SIZE)
-        print("")
       else :
         print("Invalid command.")
         continue
