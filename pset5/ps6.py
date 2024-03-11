@@ -102,8 +102,23 @@ class Message(object):
         Returns: a dictionary mapping a letter (string) to 
                  another letter (string). 
         '''
-        pass #delete this line and replace with your code here
-
+        dict = {}
+        for letter in string.ascii_lowercase:
+          newLetterValue = ord(letter) + shift
+          if newLetterValue > ord('z'):
+              newLetterValue = ord(letter) - (26 - shift)
+          newLetter = chr(newLetterValue)
+          dict.update({letter: newLetter})
+        for letter in string.ascii_uppercase:
+          newLetterValue = ord(letter) + shift
+          if newLetterValue > ord('Z'):
+            newLetterValue = ord(letter) - (26 - shift)
+          newLetter = chr(newLetterValue)
+          dict.update({letter: newLetter})
+        return dict
+          
+            
+          
     def apply_shift(self, shift):
         '''
         Applies the Caesar Cipher to self.message_text with the input shift.
