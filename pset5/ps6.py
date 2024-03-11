@@ -131,10 +131,16 @@ class Message(object):
              down the alphabet by the input shift
         '''
         #create shifted dictionary
-        dict = build_shift_dict()
+        dict = self.build_shift_dict(shift)
+        
         
         #loop through the message
-        for char in get_message_text():
+        str = ""
+        for char in self.get_message_text():
+          if char in string.ascii_letters:
+            char = dict[char]
+          str += char
+        return str
           
           #change each letter to the shifted letter using the dictionary
         #return the finished message
