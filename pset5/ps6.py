@@ -116,7 +116,6 @@ class Message(object):
           newLetter = chr(newLetterValue)
           dict.update({letter: newLetter})
         return dict
-          
             
           
     def apply_shift(self, shift):
@@ -131,8 +130,14 @@ class Message(object):
         Returns: the message text (string) in which every character is shifted
              down the alphabet by the input shift
         '''
-        pass #delete this line and replace with your code here
-
+        #create shifted dictionary
+        dict = build_shift_dict()
+        
+        #loop through the message
+        for char in get_message_text():
+          
+          #change each letter to the shifted letter using the dictionary
+        #return the finished message
 class PlaintextMessage(Message):
     def __init__(self, text, shift):
         '''
