@@ -242,8 +242,13 @@ class CiphertextMessage(Message):
         for i in range(26):
           new_message = self.apply_shift(26 - s)
           new_message.split(' ')
+          valid_words = 0
+          most_valid_words = 0
           for word in new_message:
-            if is_word(word_list, word):
+            if is_word(WORDLIST_FILENAME, word):
+              valid_words += 1
+          if valid_words > most_valid_words:
+            most_valid_words = valid_words
           
 #Example test case (PlaintextMessage)
 plaintext = PlaintextMessage('hello', 2)
