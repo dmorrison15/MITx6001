@@ -238,16 +238,28 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
+        decrypt_value = 0  
+        #the most valid words from a shifted message so far
+        most_valid_words = 0
+        #test every possible decryption value (0 - 26)
         for i in range(26):
-          new_message = self.apply_shift(26 - i)
-          new_message.split(' ')
+         #create a message for each tested shift value
+          new_message = self.apply_shift(i)
+         #separate the string into a list containing every             word
+          new_message.split(' ') 
           valid_words = 0
-          most_valid_words = 0
+          #checks for valid words throughout each message
           for word in new_message:
             if is_word(WORDLIST_FILENAME, word):
               valid_words += 1
+          #update the most valid words in a message as needed
           if valid_words > most_valid_words:
             most_valid_words = valid_words
+            decrypt_value = i
+        #create the message using the correct decryption              value
+        final_message = self.apply_shift(decrypt_value)
+        #return a tuple with the decryption value and the             message
+        return (decrypt_value, final_message)
           
 #Example test case (PlaintextMessage)
 plaintext = PlaintextMessage('hello', 2)
@@ -258,3 +270,11 @@ print('Actual Output:', plaintext.get_message_text_encrypted())
 ciphertext = CiphertextMessage('jgnnq')
 print('Expected Output:', (24, 'hello'))
 print('Actual Output:', ciphertext.decrypt_message())
+
+ciphertext2 = CiphertextMessage('jk vjgtg')
+print('\n' + 'Expected Output:', (24, 'hi there'))
+print('Actual Output:', ciphertext2.decrypt_message())
+
+ciphertext3 = CiphertextMessage('rfgq kcqqyec gq y rcqr')
+print('\n' + 'Expected Output:', (2, 'this message is a test'))
+print('Actual Output:', ciphertext3.decrypt_message())
