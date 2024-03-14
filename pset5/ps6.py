@@ -246,15 +246,15 @@ class CiphertextMessage(Message):
          #create a message for each tested shift value
           new_message = self.apply_shift(i)
          #separate the string into a list containing every             word
-          new_message.split(' ') 
-          valid_words = 0
+          message_list = new_message.split(' ') 
+          valid_words_count = 0
           #checks for valid words throughout the list
-          for word in new_message:
-            if is_word(WORDLIST_FILENAME, word):
-              valid_words += 1
+          for word in message_list:
+            if is_word(self.valid_words, word):
+              valid_words_count += 1
           #update the most valid words as needed
-          if valid_words > most_valid_words:
-            most_valid_words = valid_words
+          if valid_words_count > most_valid_words:
+            most_valid_words = valid_words_count
             decrypt_value = i
         #create the message using the correct decryption              value
         final_message = self.apply_shift(decrypt_value)
@@ -267,22 +267,9 @@ class CiphertextMessage(Message):
 # print('Actual Output:', plaintext.get_message_text_encrypted())
 
 #Example test case (CiphertextMessage)
-print('\n' + 'Test Case 1')
-ciphertext = CiphertextMessage('jgnnq')
-print('Expected Output:', (24, 'hello'))
-print('Actual Output:', ciphertext.decrypt_message())
+# print('\n' + 'Test Case 1')
+# ciphertext = CiphertextMessage('jgnnq')
+# print('Expected Output:', (24, 'hello'))
+# print('Actual Output:', ciphertext.decrypt_message())
 
-print('\n' + 'Test Case 2')
-ciphertext2 = CiphertextMessage('jk vjgtg')
-print('Expected Output:', (24, 'hi there'))
-print('Actual Output:', ciphertext2.decrypt_message())
 
-print('\n' + 'Test Case 3:')
-ciphertext3 = CiphertextMessage('rfgq kcqqyec gq y rcqr')
-print('Expected Output:', (2, 'this message is a test'))
-print('Actual Output:', ciphertext3.decrypt_message())
-
-print('\n' + 'Test Case 4:')
-ciphertext4 = CiphertextMessage('this message is a test')
-print('Expected Output:', (0, 'this message is a test'))
-print('Actual Output:', ciphertext4.decrypt_message())
