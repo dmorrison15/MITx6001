@@ -1,5 +1,4 @@
 import string
-
 ### DO NOT MODIFY THIS FUNCTION ###
 def load_words(file_name):
     '''
@@ -272,4 +271,14 @@ class CiphertextMessage(Message):
 # print('Expected Output:', (24, 'hello'))
 # print('Actual Output:', ciphertext.decrypt_message())
 
+def decrypt_story():
+  '''
+  Returns the decrypted version of a story
+  '''
+  encrypted_story = CiphertextMessage(get_story_string())
+  story_tuple = encrypted_story.decrypt_message()
+  return story_tuple
 
+# Example test case (decrypt_story)
+story = decrypt_story()
+print(story)
